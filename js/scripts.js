@@ -1,6 +1,11 @@
 $(document).ready(function(){
   var isLeap = function(year){
-    return false;
+    if(year%4 === 0){
+      return true;
+    }
+    else{
+      return false;
+    }
   };
 
   $("#input").submit(function(event){
