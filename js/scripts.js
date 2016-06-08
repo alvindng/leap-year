@@ -12,7 +12,7 @@ $(document).ready(function(){
   $("#input").submit(function(event){
     // debugger;
     yearInput = parseInt($("#year").val());
-    if(yearInput.toString() === "NaN" || yearInput<0){
+    if(isNaN(yearInput) === true || yearInput<0){
       alert("please enter a positive year into the input field");
     }
     else{
