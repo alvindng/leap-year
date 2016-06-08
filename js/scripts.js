@@ -26,4 +26,13 @@ $(document).ready(function(){
     }
     event.preventDefault();
   });
+
+  $("#plForm").submit(function(event){
+    var englishWord = $("#plInput").val();
+    var result = englishWord + "ay";
+    $(".word").text(result);
+    event.preventDefault();
+  });
+
+
 });
