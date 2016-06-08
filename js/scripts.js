@@ -12,8 +12,8 @@ $(document).ready(function(){
   $("#input").submit(function(event){
     // debugger;
     yearInput = parseInt($("#year").val());
-    if(yearInput.toString() === "NaN"){
-      alert("please enter a year into the input field");
+    if(yearInput.toString() === "NaN" || yearInput<0){
+      alert("please enter a positive year into the input field");
     }
     else{
       $(".year").text(yearInput);
