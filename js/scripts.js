@@ -1,5 +1,5 @@
 var isVowel = function(letter){
-  var vowels = ["a","e","i","o","u"];
+  var vowels = ["a","e","i","o","u","y"];
   var m = 0;
   vowels.forEach(function(vowel){
     if(letter===vowel){
@@ -16,7 +16,7 @@ var isVowel = function(letter){
 }
 
 var isConsonant = function(letter){
-  var consonants = ["b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"];
+  var consonants = ["b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","z"];
   var m = 0;
   consonants.forEach(function(consonant){
     if(letter===consonant){
@@ -34,13 +34,28 @@ var isConsonant = function(letter){
 var pigLatin = function(englishWord){
   var numOfConsonants;
   var pLWord = englishWord;
-  for(i=0;isConsonant(englishWord.charAt(i))===true;i++){
-    pLWord = pLWord + englishWord.charAt(i);
-    numOfConsonants +=1;
-    pLWord = pLWord.slice(1);
+  var quWord = englishWord;
+  if (englishWord.charAt(0) === "q" && englishWord.charAt(1) === "u") {
+    quWord = quWord + "qu";
+    quWord = quWord.slice(2);
+    return quWord + "ay";
   }
-  return pLWord + "ay";
+  else if(englishWord.charAt(0)==="y"){
+    pLWord = pLWord + 'y';
+    pLWord = pLWord.slice(1);
+    return pLWord + "ay"
+  }
+  else {
+    for(i=0;isConsonant(englishWord.charAt(i))===true;i++){
+      pLWord = pLWord + englishWord.charAt(i);
+      numOfConsonants +=1;
+      pLWord = pLWord.slice(1);
+      return pLWord + "ay";
+    }
+  }
+
 }
+
 
 $(document).ready(function(){
   var yearInput;
@@ -72,7 +87,7 @@ $(document).ready(function(){
   });
 
   $("#plForm").submit(function(event){
-    var englishWord = $("#plInput").val();
+    var englishWord = $("#plInput").val().toLowerCase();
     var result = pigLatin(englishWord);
     $(".word").text(result);
     event.preventDefault();
