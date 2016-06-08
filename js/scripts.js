@@ -1,3 +1,47 @@
+var isVowel = function(letter){
+  var vowels = ["a","e","i","o","u"];
+  var m = 0;
+  vowels.forEach(function(vowel){
+    if(letter===vowel){
+      m += 1;
+    }
+    else{}
+  });
+  if(m>0){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+var isConsonant = function(letter){
+  var consonants = ["b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z"];
+  var m = 0;
+  consonants.forEach(function(consonant){
+    if(letter===consonant){
+      m += 1;
+    }
+    else{}
+  });
+  if(m>0){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+var pigLatin = function(englishWord){
+  var numOfConsonants;
+  var pLWord = englishWord;
+  for(i=0;isConsonant(englishWord.charAt(i))===true;i++){
+    pLWord = pLWord + englishWord.charAt(i);
+    numOfConsonants +=1;
+    pLWord = pLWord.slice(1);
+  }
+  return pLWord + "ay";
+}
+
 $(document).ready(function(){
   var yearInput;
   var isLeap = function(){
@@ -29,7 +73,7 @@ $(document).ready(function(){
 
   $("#plForm").submit(function(event){
     var englishWord = $("#plInput").val();
-    var result = englishWord + "ay";
+    var result = pigLatin(englishWord);
     $(".word").text(result);
     event.preventDefault();
   });
