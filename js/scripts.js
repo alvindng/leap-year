@@ -1,3 +1,4 @@
+//Back End
 var isVowel = function(letter){
   var vowels = ["a","e","i","o","u","y"];
   var m = 0;
@@ -32,17 +33,6 @@ var isConsonant = function(letter){
   }
 }
 
-var regExWord = function(enWord){
-  var regex = /\b(y|qu|[bcdfghjklmnpqrstvwxz]+)/;
-  if(isConsonant(enWord.charAt(0))===true){
-    var pLWord = enWord.concat(regex.exec(enWord)[0]).replace(regex, "").concat("ay");
-  }
-  else{
-    pLWord = enWord + "ay";
-  }
-  return pLWord;
-}
-
 var pigLatinWord = function(englishWord){
   var numOfConsonants;
   var pLWord = englishWord;
@@ -75,13 +65,30 @@ var pigLatinWord = function(englishWord){
 
 var pigLatinPhrase = function(phrase){
   var wordArray = phrase.split(" ");
-  var pLPhrase = ""
+  var pLPhrase = "";
   wordArray.forEach(function(word){
-    pLPhrase = pLPhrase + regExWord(word) + " ";
+    pLPhrase = pLPhrase + pigLatinWord(word) + " ";
   });
   return pLPhrase;
 }
 
+var regExWord = function(enWord){
+  debugger;
+  var consonants = /\b(y|qu|[bcdfghjklmnpqrstvwxz]+)/g;
+  var pLPhrase = "";
+  (enWord).match(/\b\w+/g).forEach(function(word){
+    if(consonants.test(enWord)===true){
+      pLPhrase = pLPhrase + word.concat(word.match(consonants)[0]).replace(consonants, "").concat("ay") + " ";
+    }
+    else{
+      pLPhrase = pLPhrase + word + "ay" + " ";
+    }
+  });
+  // var pLWord = enWord.concat(enWord.match(consonants)[0]).replace(consonants, "").concat("ay");
+  return pLPhrase;
+}
+
+//front end
 $(document).ready(function(){
   var yearInput;
   var isLeap = function(){
@@ -113,7 +120,7 @@ $(document).ready(function(){
 
   $("#plForm").submit(function(event){
     var englishWord = $("#plInput").val().toLowerCase();
-    var result = pigLatinPhrase(englishWord);
+    var result = regExWord(englishWord);
     $(".word").text(result);
     event.preventDefault();
   });
