@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  var isLeap = function(year){
-
-    if ((year%4 === 0) && ((year%400 === 0)||(year%100 !== 0))){
+  var yearInput;
+  var isLeap = function(){
+    if ((yearInput%4 === 0) && (yearInput%100 !== 0)||(yearInput % 400 === 0)){
       return true;
     }
     else{
@@ -10,15 +10,20 @@ $(document).ready(function(){
   };
 
   $("#input").submit(function(event){
-    var yearInput = $("#year").val();
-    leapYN = isLeap(yearInput);
-    $(".year").text(yearInput);
-    if(leapYN === true){
+    // debugger;
+    yearInput = parseInt($("#year").val());
+    if(yearInput.toString() === "NaN"){
+      alert("please enter a year into the input field");
     }
     else{
-      $(".not").text("NOT")
+      $(".year").text(yearInput);
+      if(isLeap() === true){
+        $(".not").text("");
+      }
+      else{
+        $(".not").text("NOT");
+      }
     }
     event.preventDefault();
   });
-
-})
+});
