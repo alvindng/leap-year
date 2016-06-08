@@ -31,7 +31,7 @@ var isConsonant = function(letter){
     return false;
   }
 }
-var pigLatin = function(englishWord){
+var pigLatinWord = function(englishWord){
   var numOfConsonants;
   var pLWord = englishWord;
   var quWord = englishWord;
@@ -45,7 +45,7 @@ var pigLatin = function(englishWord){
     pLWord = pLWord.slice(1);
     return pLWord + "ay"
   }
-  else {
+  else if(isConsonant(englishWord.charAt(0))===true) {
     for(i=0;isConsonant(englishWord.charAt(i))===true;i++){
       pLWord = pLWord + englishWord.charAt(i);
       numOfConsonants +=1;
@@ -53,9 +53,20 @@ var pigLatin = function(englishWord){
       return pLWord + "ay";
     }
   }
-
+  else if(isConsonant(englishWord.charAt(0))===false){
+    pLWord = pLWord + "ay";
+    return pLWord;
+  }
 }
 
+var pigLatinPhrase = function(phrase){
+  var wordArray = phrase.split(" ");
+  var pLPhrase = ""
+  wordArray.forEach(function(word){
+    pLPhrase = pLPhrase + pigLatinWord(word) + " ";
+  });
+  return pLPhrase;
+}
 
 $(document).ready(function(){
   var yearInput;
@@ -88,7 +99,7 @@ $(document).ready(function(){
 
   $("#plForm").submit(function(event){
     var englishWord = $("#plInput").val().toLowerCase();
-    var result = pigLatin(englishWord);
+    var result = pigLatinPhrase(englishWord);
     $(".word").text(result);
     event.preventDefault();
   });
