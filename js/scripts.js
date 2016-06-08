@@ -31,10 +31,24 @@ var isConsonant = function(letter){
     return false;
   }
 }
+
+var regExWord = function(enWord){
+  var regex = /\b(y|qu|[bcdfghjklmnpqrstvwxz]+)/;
+  if(isConsonant(enWord.charAt(0))===true){
+    var pLWord = enWord.concat(regex.exec(enWord)[0]).replace(regex, "").concat("ay");
+  }
+  else{
+    pLWord = enWord + "ay";
+  }
+  return pLWord;
+}
+
 var pigLatinWord = function(englishWord){
   var numOfConsonants;
   var pLWord = englishWord;
   var quWord = englishWord;
+
+
   if (englishWord.charAt(0) === "q" && englishWord.charAt(1) === "u") {
     quWord = quWord + "qu";
     quWord = quWord.slice(2);
@@ -63,7 +77,7 @@ var pigLatinPhrase = function(phrase){
   var wordArray = phrase.split(" ");
   var pLPhrase = ""
   wordArray.forEach(function(word){
-    pLPhrase = pLPhrase + pigLatinWord(word) + " ";
+    pLPhrase = pLPhrase + regExWord(word) + " ";
   });
   return pLPhrase;
 }
