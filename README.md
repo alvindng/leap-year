@@ -1,37 +1,46 @@
 # _Leap Year Calculator and Pig Latin Translator_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Coding exercises for Epicodus Week 3, 6.8.16_
 
-#### By _**{List of contributors}**_
+#### By _**Ryan Streur & Alvin Ng**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_**Leap Year Calculator**_
+
+This calculator allowed users to enter a year, and determine if it was a leap year.
+
+* _When a year is not a leap year_
+* _Year is divisable by 4_
+* _Year is not divisable by 100_
+* _Year is divisable by 400_
+* _If the input is blank_
+* _If the input is negative_
+* _if the input is not a number_
+
+_**Pig Latin Translator**_
+
+This program allowed users to enter a word or phrase, and the translator would generate that phrase into Pig Latin.
+
+* _For words that start with a vowel, add "ay" at the end_
+* _For words that start with one or more consonants, move all of the first consecutive consonants to the end and add "ay"._
+* _If the first consonants include "qu" move the u along with the q
+for words that start with y, treat y as a consonant_
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
-
-## Known Bugs
-
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+* _Enter http://ryanstreur.github.io/leapyear/index.html into address bar_
+* _To determine whether a year is a leap year or not, enter the year into the leap year calculator_
+* _To translate a word or short phrase into pig latin, enter it into the pig latin translator_
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+Contact Ryan Streur or Alvin Ng
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+_HTML,CSS, javascript_
 
 ### License
 
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
-
-Copyright (c) 2016 **_{List of contributors or company name}_**
+Copyright (c) 2016

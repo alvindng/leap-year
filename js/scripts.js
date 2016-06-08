@@ -50,8 +50,8 @@ var pigLatinWord = function(englishWord){
       pLWord = pLWord + englishWord.charAt(i);
       numOfConsonants +=1;
       pLWord = pLWord.slice(1);
-      return pLWord + "ay";
     }
+    return pLWord + "ay";
   }
   else if(isConsonant(englishWord.charAt(0))===false){
     pLWord = pLWord + "ay";
